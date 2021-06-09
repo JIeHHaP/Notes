@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.jiehhap.notes.screens.StartFragment"
+        android:name="com.jiehhap.notes.screens.start.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
