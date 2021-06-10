@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.jiehhap.notes.screens.MainFragment"
+        android:name="com.jiehhap.notes.screens.main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/addNewNoteFragment"
-        android:name="com.jiehhap.notes.screens.AddNewNoteFragment"
+        android:name="com.jiehhap.notes.screens.add_new_note.AddNewNoteFragment"
         android:label="fragment_add_new_note"
         tools:layout="@layout/fragment_add_new_note" >
         <action
