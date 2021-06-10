@@ -5,11 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.jiehhap.notes.R
 import com.jiehhap.notes.databinding.FragmentStartBinding
-import com.jiehhap.notes.utilits.APP_ACTIVITY
-import com.jiehhap.notes.utilits.TYPE_ROOM
+import com.jiehhap.notes.utilits.*
 
 class StartFragment : Fragment() {
 
@@ -36,6 +36,24 @@ class StartFragment : Fragment() {
         mBinding.btnRoom.setOnClickListener {
             mViewModel.initDatabase(TYPE_ROOM){
                 APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
+            }
+        }
+
+        mBinding.btnFirebase.setOnClickListener {
+            mBinding.loginFirebaseGroup.visibility = View.VISIBLE
+            mBinding.btnLogin.setOnClickListener {
+                val inputEmail = mBinding.inputEmail.text.toString()
+                val inputPassword = mBinding.inputPassword.text.toString()
+                if (inputEmail.isNotEmpty()&&inputPassword.isNotEmpty()){
+                    EMAIL = inputEmail
+                    PASSWORD = inputPassword
+                    mViewModel.initDatabase(TYPE_FIREBASE){
+
+                      APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
+                    }
+                }else{
+                    showToast(getString(R.string.toast_wrong_enter))
+                }
             }
         }
     }

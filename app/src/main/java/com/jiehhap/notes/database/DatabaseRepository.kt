@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import com.jiehhap.notes.models.AppNote
 
 interface DatabaseRepository {
-    val AllNotes:LiveData<List<AppNote>>
-    suspend fun insert(note: AppNote, onSuccess:()->Unit)
-    suspend fun delete(note: AppNote, onSuccess:()->Unit)
+    val AllNotes: LiveData<List<AppNote>>
+    suspend fun insert(note: AppNote, onSuccess: () -> Unit)
+    suspend fun delete(note: AppNote, onSuccess: () -> Unit)
+
+    fun connectToDatabase(onSuccess: () -> Unit, onFail: (String) -> Unit){}
+    fun signOut(){}
 
 }
