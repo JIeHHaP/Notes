@@ -46,7 +46,7 @@ class MainFragment : Fragment() {
 
         mViewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
         mViewModel.allNotes.observe(this, mObserverList)
-        mBinding.btnAddNote.setOnClickListener {
+        mBinding.btnAddNewNote.setOnClickListener {
             APP_ACTIVITY.navController.navigate(R.id.action_mainFragment_to_addNewNoteFragment)
         }
     }
