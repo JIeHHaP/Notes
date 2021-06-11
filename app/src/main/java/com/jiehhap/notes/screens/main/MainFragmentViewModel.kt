@@ -6,4 +6,7 @@ import com.jiehhap.notes.utilits.REPOSITORY
 
 class MainFragmentViewModel(application: Application): AndroidViewModel(application){
     val allNotes = REPOSITORY.AllNotes
+    fun signOut(){
+        REPOSITORY.signOut()
+    }
 }

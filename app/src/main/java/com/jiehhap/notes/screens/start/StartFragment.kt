@@ -27,7 +27,17 @@ class StartFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        initialization()
+
+        mViewModel = ViewModelProvider(this).get(StartFragmentViewModel::class.java)
+
+        if (AppPreference.getInitUser()){
+            mViewModel.initDatabase(AppPreference.getTypeDatabase()){
+                APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
+            }
+        } else{
+            initialization()
+        }
+
 
     }
 
@@ -35,6 +45,8 @@ class StartFragment : Fragment() {
         mViewModel = ViewModelProvider(this).get(StartFragmentViewModel::class.java)
         mBinding.btnRoom.setOnClickListener {
             mViewModel.initDatabase(TYPE_ROOM){
+                AppPreference.setInitUser(true)
+                AppPreference.setTypeDatabase(TYPE_ROOM)
                 APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
             }
         }
@@ -48,6 +60,9 @@ class StartFragment : Fragment() {
                     EMAIL = inputEmail
                     PASSWORD = inputPassword
                     mViewModel.initDatabase(TYPE_FIREBASE){
+
+                        AppPreference.setInitUser(true)
+                        AppPreference.setTypeDatabase(TYPE_FIREBASE)
 
                       APP_ACTIVITY.navController.navigate(R.id.action_startFragment_to_mainFragment)
                     }
